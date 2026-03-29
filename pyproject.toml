@@ -1,15 +1,21 @@
 [build-system]
 requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "python-intro-test"
 version = "0.1.0"
-description = "Add your description here"
+description = "Add your description here: data analysis tool"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "matplotlib>=3.10.8",
     "pandas>=3.0.1",
 ]
-[tool.setuptools.package-dir]
-"" = "src"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["my_python_package"]
+
+[tool.setuptools.package-data]
+"my_python_package" = ["*.csv"]

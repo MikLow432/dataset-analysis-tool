@@ -82,8 +82,3 @@ project-root/
 ## Author
 
 Mika Lowack
-
-
-install with: py -m uv pip install -e .
-
-run with: py -m uv run -m my_python_package

@@ -49,11 +49,11 @@ def scatter(df,cors,thresh= 0.25):
     pairs = unique_corr[unique_corr['Corr'] >= thresh]
 
     print("\nCorrelations over Threshold:")
-    print(pairs)
-
     if len(pairs) == 0:
-        print("No correlations above threshold")
+        print("No correlations above Threshold")
         return
+
+    print(pairs)
 
     width = min(len(pairs), 4)
     height = math.ceil(len(pairs) / width)
@@ -71,11 +71,11 @@ def scatter(df,cors,thresh= 0.25):
 
     plt.tight_layout()
 
-def main(path, thresh=0.25, no_plots=False, summary_only=False):
+def main(path, thresh=0.25, no_plots=False, summary_only=False ,cols=None):
     df = load_data(path)
 
-    if args.cols:
-        df = df[args.cols]
+    if cols:
+        df = df[cols]
 
     summary(df)
 
@@ -95,13 +95,13 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--file", default=None)
     parser.add_argument("--thresh", type=float, default=0.25)
-    parser.add_argument("--no-plots", action="store_true")
+    parser.add_argument("--no-plots", action="store_true",)
     parser.add_argument("--summary-only", action="store_true")
-    parser.add_argument("--cols", nargs="+")
+    parser.add_argument("--cols", nargs="+", default=None)
     args = parser.parse_args()
 
     if args.file:
-        main(args.file, args.thresh)
+        main(args.file, args.thresh, args.thresh, args.no_plots, args.summary_only, args.cols)
     else:
         path = resources.files("my_python_package").joinpath("Income.csv")
-        main(path, args.thresh)
+        main(path, args.thresh, args.no_plots, args.summary_only, args.cols)

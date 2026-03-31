@@ -88,7 +88,7 @@ py -m uv run -m my_python_package --thresh 0.5
 ### Analyze selected columns only
 
 ```bash
-py -m uv run -m my_python_package --cols age income education
+py -m uv run -m my_python_package --cols " age " " compositeHourlyWages " " yearsEducation "
 ```
 
 ---
